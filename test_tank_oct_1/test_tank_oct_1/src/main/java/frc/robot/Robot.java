@@ -9,6 +9,7 @@ package frc.robot;
 
 //import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.Solenoid;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.XboxController;
@@ -31,10 +32,12 @@ public class Robot extends TimedRobot {
   private XboxController control;
   private Spark motor1L, motor2L, motor3L, motor1R, motor2R, motor3R;
   private SpeedControllerGroup Left, Right;
+  private Solenoid exampleSolenoid;  
+
 
   @Override
   public void robotInit() {
-    
+    Solenoid.exampleSolenoid = Solenoid(1);
     control = new XboxController(1);
     motor1L = new Spark(0);
     motor2L = new Spark(1);
