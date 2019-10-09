@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     m_myRobot.tankDrive(control.getY(Hand.kLeft), control.getY(Hand.kRight));
  
-     if (butten A (git.prest) {
+     if (getAButtonPressed(Hand.kRight)) {
       //yuckhchkgchgkcghk
     }
 
