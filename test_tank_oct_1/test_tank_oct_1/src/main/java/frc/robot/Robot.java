@@ -55,6 +55,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    if(getBumper(Hand.Right)){
+      exampleSolenoid.set(true);
+    }
+    else {
+      exampleSolenoid.set(false);
+    }
+
     m_myRobot.tankDrive(control.getY(Hand.kLeft), control.getY(Hand.kRight));
     
   }
