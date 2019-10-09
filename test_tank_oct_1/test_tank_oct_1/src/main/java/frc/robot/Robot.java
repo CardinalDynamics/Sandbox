@@ -55,7 +55,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    if(getBumper(Hand.Right)){
+    if(getBumper(Hand.kRight)){
       exampleSolenoid.set(true);
     }
     else {
@@ -63,10 +63,6 @@ public class Robot extends TimedRobot {
     }
 
     m_myRobot.tankDrive(control.getY(Hand.kLeft), control.getY(Hand.kRight));
- 
-     if (getAButtonPressed(Hand.kRight)) {
-      //yuckhchkgchgkcghk
-    }
-
+    
   }
 }
