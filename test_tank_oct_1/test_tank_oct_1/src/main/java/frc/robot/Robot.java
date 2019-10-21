@@ -27,8 +27,15 @@ public class Robot extends TimedRobot {
   private DifferentialDrive m_myRobot;
   //private Joystick m_leftStick;
   //private Joystick m_rightStick;
+<<<<<<< HEAD
   //anything you want;
 
+=======
+  //pineappe;
+  //hi guys;
+  //whattup gamers;
+  
+>>>>>>> adab505a36f1a7fd906b961abff193a28df62c4b
   private XboxController control;
   private Spark motor1L, motor2L, motor3L, motor1R, motor2R, motor3R;
   private SpeedControllerGroup Left, Right;
