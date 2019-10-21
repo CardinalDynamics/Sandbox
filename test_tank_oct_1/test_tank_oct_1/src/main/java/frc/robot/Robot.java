@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
     motor1R = new Spark(3);
     motor2R = new Spark(4);
     motor3R = new Spark(5);
-   c = new Compresor(0);
+    c = new Compresor(0);
     Left = new SpeedControllerGroup(motor1L, motor2L, motor3L);
     Right = new SpeedControllerGroup(motor1R, motor2R, motor3R);
 
