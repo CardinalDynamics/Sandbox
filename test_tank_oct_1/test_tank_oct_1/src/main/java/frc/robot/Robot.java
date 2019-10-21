@@ -9,7 +9,6 @@ package frc.robot;
 
 //import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.PWMVictorSPX;
-import edu.wpi.first.wpilibj.Solenoid;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.XboxController;
@@ -28,19 +27,15 @@ public class Robot extends TimedRobot {
   private DifferentialDrive m_myRobot;
   //private Joystick m_leftStick;
   //private Joystick m_rightStick;
-  //pineapple
-  //hi guys
-  //whattup gamers
-  
+  //anything you want;
+
   private XboxController control;
   private Spark motor1L, motor2L, motor3L, motor1R, motor2R, motor3R;
   private SpeedControllerGroup Left, Right;
-  private Solenoid exampleSolenoid;  
 
-  private Compresor c;
   @Override
   public void robotInit() {
-    Solenoid.exampleSolenoid = Solenoid(1);
+    
     control = new XboxController(1);
     motor1L = new Spark(0);
     motor2L = new Spark(1);
@@ -48,7 +43,7 @@ public class Robot extends TimedRobot {
     motor1R = new Spark(3);
     motor2R = new Spark(4);
     motor3R = new Spark(5);
-    c = new Compresor(0);
+
     Left = new SpeedControllerGroup(motor1L, motor2L, motor3L);
     Right = new SpeedControllerGroup(motor1R, motor2R, motor3R);
 
@@ -57,14 +52,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    if(getBumper(Hand.kRight)){
-      exampleSolenoid.set(true);
-    }
-    else {
-      exampleSolenoid.set(false);
-    }
-
     m_myRobot.tankDrive(control.getY(Hand.kLeft), control.getY(Hand.kRight));
-    
   }
 }
