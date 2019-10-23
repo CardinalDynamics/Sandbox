@@ -27,29 +27,26 @@ public class Robot extends TimedRobot {
   private DifferentialDrive m_myRobot;
   //private Joystick m_leftStick;
   //private Joystick m_rightStick;
-<<<<<<< HEAD
   //anything you want;
-
-=======
   //pineappe;
   //hi guys;
   //whattup gamers;
   
 >>>>>>> adab505a36f1a7fd906b961abff193a28df62c4b
   private XboxController control;
-  private Spark motor1L, motor2L, motor3L, motor1R, motor2R, motor3R;
+  private Talon motor1L, motor2L, motor3L, motor1R, motor2R, motor3R;
   private SpeedControllerGroup Left, Right;
 
   @Override
   public void robotInit() {
     
     control = new XboxController(1);
-    motor1L = new Spark(0);
-    motor2L = new Spark(1);
-    motor3L = new Spark(2);
-    motor1R = new Spark(3);
-    motor2R = new Spark(4);
-    motor3R = new Spark(5);
+    motor1L = new Talon(0);
+    motor2L = new Talon(1);
+    motor3L = new Talon(2);
+    motor1R = new Talon(7);
+    motor2R = new Talon(8);
+    motor3R = new Talon(9);
 
     Left = new SpeedControllerGroup(motor1L, motor2L, motor3L);
     Right = new SpeedControllerGroup(motor1R, motor2R, motor3R);
