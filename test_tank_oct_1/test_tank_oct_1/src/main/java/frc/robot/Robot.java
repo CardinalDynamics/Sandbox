@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
   //hi guys;
   //whattup gamers;
   
->>>>>>> adab505a36f1a7fd906b961abff193a28df62c4b
+//>>>>>>> adab505a36f1a7fd906b961abff193a28df62c4b
   private XboxController control;
   private Talon motor1L, motor2L, motor3L, motor1R, motor2R, motor3R;
   private SpeedControllerGroup Left, Right;
@@ -56,6 +56,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    m_myRobot.tankDrive(control.getY(-Hand.kLeft), control.getY(-Hand.kRight));
+    m_myRobot.arcadedrive(control.getY(-Hand.kLeft), control.getY(-Hand.kRight));
   }
 }
