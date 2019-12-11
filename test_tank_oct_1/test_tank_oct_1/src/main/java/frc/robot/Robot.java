@@ -79,7 +79,7 @@ public class Robot extends TimedRobot {
  
      if (getAButtonPressed(Hand.kRight)) {
       //yuckhchkgchgkcghk
-      System.out.println(A)
+      System.out.println(A);
     }
   }
 }
