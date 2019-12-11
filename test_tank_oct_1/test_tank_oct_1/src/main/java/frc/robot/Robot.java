@@ -43,12 +43,14 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     Solenoid.exampleSolenoid = Solenoid(1);
     control = new XboxController(1);
-    motor1L = new Spark(0);
-    motor2L = new Spark(1);
-    motor3L = new Spark(2);
-    motor1R = new Spark(3);
-    motor2R = new Spark(4);
-    motor3R = new Spark(5);
+
+    motor1L = new Talon(0);
+    motor2L = new Talon(1);
+    motor3L = new Talon(2);
+    motor1R = new Talon(7);
+    motor2R = new Talon(8);
+    motor3R = new Talon(9);
+
     c = new Compresor(0);
     Left = new SpeedControllerGroup(motor1L, motor2L, motor3L);
     Right = new SpeedControllerGroup(motor1R, motor2R, motor3R);
