@@ -56,6 +56,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    m_myRobot.arcadedrive(control.getY(-Hand.kLeft), control.getY(-Hand.kRight));
+    m_myRobot.arcadedrive(control.getY(Hand.kLeft), control.getY(-Hand.kRight));
   }
 }
