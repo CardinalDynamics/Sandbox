@@ -104,8 +104,14 @@ public class Robot extends TimedRobot {
 
      if (getAButtonPressed(Hand.kRight))
     {
-      //yuckhchkgchgkcghk
-      System.out.println(A);
+      m_robotDrive.arcadeDrive(0.5, 0.0);
+      m_robotDrive.stopMotor();
+    }
+
+    if (getBButtonPressed(Hand.kRight))
+    {
+      m_robotDrive.arcadeDrive(-0.5, 0.0);
+      m_robotDrive.stopMotor();
     }
   }
 }
