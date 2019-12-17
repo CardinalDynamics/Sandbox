@@ -11,6 +11,7 @@ package frc.robot;
 //import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -28,17 +29,17 @@ public class Robot extends TimedRobot {
   private DifferentialDrive m_myRobot;
   //pineapple
 
-  private Talon BunnyLift;
+  private Spark BunnyLift;
   private XboxController control;
-  private Talon motor1LS, motor2LS, motor3LD,motor4LD, motor1RS, motor2RS, motor3RD, motor4RD;
+  private Talon motor1L, motor2L, motor3L,motor4L, motor1R, motor2R, motor3R, motor4R;
   private SpeedControllerGroup Left, Right;
-  private Solenoid exampleSolenoid;
+  // private Solenoid exampleSolenoid;
   private final Timer m_timer = new Timer();  
 
-  private Compresor c;
+  // private Compresor c;
   @Override
   public void robotInit() {
-    Solenoid.exampleSolenoid = Solenoid(1);
+    // Solenoid.exampleSolenoid = Solenoid(1);
     control = new XboxController(1);
 
     motor1L = new Talon(0);
@@ -48,9 +49,9 @@ public class Robot extends TimedRobot {
     motor2R = new Talon(8);
     motor3R = new Talon(9);
 
-    BunnyLift = new Talon(5);
+    BunnyLift = new Spark(5);
 
-    c = new Compresor(0);
+    // c = new Compresor(0);
     Left = new SpeedControllerGroup(motor1L, motor2L, motor3L);
     Right = new SpeedControllerGroup(motor1R, motor2R, motor3R);
 
@@ -88,24 +89,24 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     // Drive for 2 seconds
     if (m_timer.get() < 2.0) {
-      m_robotDrive.arcadeDrive(0.5, 0.0); // drive forwards half speed
+      m_myRobot.arcadeDrive(-0.5, 0.0); // drive forwards half speed
     } else {
-      m_robotDrive.stopMotor(); // stop robot
+      m_myRobot.stopMotor(); // stop robot
     }
   }
 
   @Override
   public void teleopPeriodic() {
-
-    m_myRobot.arcadedrive(control.getY(Hand.kLeft), control.getY(-Hand.kRight));
+    
+    m_myRobot.arcadeDrive(control.getY(Hand.kLeft), -control.getY(Hand.kRight));
 
     
-     if (getAButtonPressed(Hand.kRight))
+     if (control.getAButtonPressed())
     {
       BunnyLift.set(0.5);
     }
 
-    else if (getBButtonPressed(Hand.kRight))
+    else if (control.getBButtonPressed())
     {
       BunnyLift.set(-0.5);
     }
