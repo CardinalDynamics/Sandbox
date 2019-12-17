@@ -24,18 +24,13 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 
-/**
- * This is a demo program showing the use of the RobotDrive class, specifically
- * it contains the code necessary to operate a robot with tank drive.
- */
 public class Robot extends TimedRobot {
   private DifferentialDrive m_myRobot;
-  //private Joystick m_leftStick;
-  //private Joystick m_rightStick;
   //pineapple
-  
+
+  private Talon BunnyLift;
   private XboxController control;
-  private Spark motor1LS, motor2LS, motor3LD,motor4LD, motor1RS, motor2RS, motor3RD, motor4RD;
+  private Talon motor1LS, motor2LS, motor3LD,motor4LD, motor1RS, motor2RS, motor3RD, motor4RD;
   private SpeedControllerGroup Left, Right;
   private Solenoid exampleSolenoid;
   private final Timer m_timer = new Timer();  
@@ -52,6 +47,8 @@ public class Robot extends TimedRobot {
     motor1R = new Talon(7);
     motor2R = new Talon(8);
     motor3R = new Talon(9);
+
+    BunnyLift = new Talon(5);
 
     c = new Compresor(0);
     Left = new SpeedControllerGroup(motor1L, motor2L, motor3L);
@@ -102,16 +99,20 @@ public class Robot extends TimedRobot {
 
     m_myRobot.arcadedrive(control.getY(Hand.kLeft), control.getY(-Hand.kRight));
 
+    
      if (getAButtonPressed(Hand.kRight))
     {
-      m_robotDrive.arcadeDrive(0.5, 0.0);
-      m_robotDrive.stopMotor();
+      BunnyLift.set(0.5);
     }
 
-    if (getBButtonPressed(Hand.kRight))
+    else if (getBButtonPressed(Hand.kRight))
     {
-      m_robotDrive.arcadeDrive(-0.5, 0.0);
-      m_robotDrive.stopMotor();
+      BunnyLift.set(-0.5);
+    }
+
+    else
+    {
+      BunnyLift.stopMotor();
     }
   }
 }
