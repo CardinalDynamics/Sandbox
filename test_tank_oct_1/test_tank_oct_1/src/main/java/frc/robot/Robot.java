@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
   private DifferentialDrive m_myRobot;
   //pineapple
 
-  private Spark BunnyLift;
+  private Spark BunnyLift, intake;
   private XboxController control;
   private Talon motor1L, motor2L, motor3L,motor4L, motor1R, motor2R, motor3R, motor4R;
   private SpeedControllerGroup Left, Right;
@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
     motor3R = new Talon(9);
 
     BunnyLift = new Spark(5);
-
+    intake = new Spark(4);
     // c = new Compresor(0);
     Left = new SpeedControllerGroup(motor1L, motor2L, motor3L);
     Right = new SpeedControllerGroup(motor1R, motor2R, motor3R);
@@ -75,23 +75,25 @@ public class Robot extends TimedRobot {
     // Drive for 2 seconds
     if (m_timer.get() < 2.0) {
       m_myRobot.arcadeDrive(-0.5, 0.0); // drive forwards half speed
+      intake.set(0.8);
     } else {
       m_myRobot.stopMotor(); // stop robot
+      intake.stopMotor();
     }
   }
 
   @Override
   public void teleopPeriodic() {
     
-    m_myRobot.arcadeDrive(control.getY(Hand.kLeft), -control.getY(Hand.kRight));
+    m_myRobot.arcadeDrive(control.getY(Hand.kLeft), control.getX(Hand.kRight));
 
     
-     if (control.getAButtonPressed())
+     if (control.getAButton())
     {
       BunnyLift.set(0.5);
     }
 
-    else if (control.getBButtonPressed())
+    else if (control.getBButton())
     {
       BunnyLift.set(-0.5);
     }
@@ -99,6 +101,16 @@ public class Robot extends TimedRobot {
     else
     {
       BunnyLift.stopMotor();
+    }
+
+    if(control.getXButton()){
+      intake.set(0.8);
+    }
+    else if(control.getYButton()){
+      intake.set(-0.8);
+    }
+    else {
+      intake.stopMotor();
     }
 
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
